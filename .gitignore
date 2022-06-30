@@ -30,3 +30,15 @@
 *.exe
 *.out
 *.app
+.vs/set_of_integers/v17/.suo
+.vs/set_of_integers/v17/Browse.VC.db
+*.ipch
+*.sln
+*.vcxproj
+*.filters
+*.user
+*.vsidx
+*.lock
+*.db-shm
+*.db-wal
+*.opendb
