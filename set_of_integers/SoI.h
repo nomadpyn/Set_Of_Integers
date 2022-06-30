@@ -1,4 +1,8 @@
 #pragma once
+#include<iostream>
+
+using namespace std;
+
 class SoI
 {
 private:
@@ -16,6 +20,10 @@ public:
 			this->arr[i] = arrP[i];
 		cout << "You create array with " << this->size << " elements.\n";
 		cout << "To make Set of Integers we need check this array for coincidence.\n";
+		if (isSoI())
+			cout << "Your object is Set of Integers!\n";
+		else
+			cout << "Your object isnt Set of Integers(\n";
 	}
 	SoI():SoI(3){}
 	~SoI() {
@@ -28,5 +36,6 @@ public:
 		for (int i = 0; i < this->size; i++)
 			this->arr[i] = other.arr[i];		
 	}
+	bool isSoI() const;
 };
 
