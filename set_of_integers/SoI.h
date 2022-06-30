@@ -21,5 +21,12 @@ public:
 	~SoI() {
 		delete[] this->arr;
 	}
+	SoI(const SoI& other) : size{ other.size } {
+		if (this->arr != nullptr)
+			delete[] this->arr;
+		this->arr = new unsigned int[this->size];
+		for (int i = 0; i < this->size; i++)
+			this->arr[i] = other.arr[i];		
+	}
 };
 
