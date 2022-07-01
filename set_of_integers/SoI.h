@@ -11,19 +11,13 @@ private:
 public:
 	SoI(const int szP) :size{ szP } {
 		this->arr = new unsigned int[this->size] {};
-		cout << "You create array with " << this->size << " elements.\n";
-		cout << "To make Set of Integers you need fill this array\n";
 	}
 	SoI (const unsigned int *arrP, const int szP) : size{ szP } {
 		this->arr = new unsigned int[this->size] {};
 		for (int i = 0; i < this->size; i++)
 			this->arr[i] = arrP[i];
-		cout << "You create array with " << this->size << " elements.\n";
-		cout << "To make Set of Integers we need check this array for coincidence.\n";
-		if (isSoI())
-			cout << "Your object is Set of Integers!\n";
-		else
-			cout << "Your object isnt Set of Integers(\n";
+		if (isSoI() == false)
+			makeSoI();
 	}
 	SoI():SoI(3){}
 	~SoI() {
@@ -37,5 +31,7 @@ public:
 			this->arr[i] = other.arr[i];		
 	}
 	bool isSoI() const;
+	void makeSoI();
+	void print() const;
 };
 

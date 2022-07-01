@@ -5,9 +5,12 @@ using namespace std;
 
 int main() {
 
-	const int sz = 5;
-	unsigned int arr[sz]{ 3,5,6,12,8 };
+	const int sz = 10;
+	unsigned int arr[sz]{ 3,5,3,12,7,8,9,12,4,3 };
 	SoI A(arr, sz);
+	
+	A.print();
+
 
 	return 0;
 }
