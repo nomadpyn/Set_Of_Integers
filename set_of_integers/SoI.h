@@ -34,7 +34,9 @@ public:
 	bool isSoI() const;
 	void makeSoI();
 	bool isValueInArr(unsigned int) const;
+	int getSize() const;
 	friend ostream& operator << (ostream& ouput, const SoI& obj);
 	friend istream& operator >> (istream& input, SoI& obj);
 	SoI operator+=(unsigned int);
+	unsigned int& operator[](int);
 };

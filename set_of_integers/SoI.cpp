@@ -50,6 +50,10 @@ bool SoI::isValueInArr(unsigned int value) const {
 	return false;
 }
 
+int SoI::getSize() const {
+	return this->size;
+}
+
 ostream& operator<<(ostream& output, const SoI& obj){
 	cout << "Set of Integers = ";
 	for (int i = 0; i < obj.size; i++) {
@@ -85,4 +89,8 @@ SoI SoI::operator+=(unsigned int value) {
 		delete[]tmp;
 	}
 	return *this;
+}
+
+unsigned int &SoI::operator[](int value) {
+	return this->arr[value];
 }
