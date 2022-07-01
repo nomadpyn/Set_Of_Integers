@@ -41,3 +41,13 @@ void SoI::makeSoI() {
 		}
 	}
 }
+
+ostream& operator<<(ostream& output, const SoI& obj){
+	cout << "Set of Integers = ";
+	for (int i = 0; i < obj.size; i++) {
+		output << obj.arr[i];
+		if (i < obj.size - 1)
+			output << "-";
+	}
+	return output;
+}

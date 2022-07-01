@@ -6,11 +6,12 @@ using namespace std;
 int main() {
 
 	const int sz = 10;
-	unsigned int arr[sz]{ 3,5,3,12,7,8,9,12,4,3 };
+	unsigned int arr[sz]{ 3,5,3,5,3,2,1,2,5,3 };
 	SoI A(arr, sz);
-	
-	A.print();
+	SoI B{ A };
+	//B.print();
 
+	cout << B;
 
 	return 0;
 }

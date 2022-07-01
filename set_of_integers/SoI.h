@@ -33,5 +33,6 @@ public:
 	bool isSoI() const;
 	void makeSoI();
 	void print() const;
+	friend ostream& operator << (ostream& ouput, const SoI& arr);
 };
 
