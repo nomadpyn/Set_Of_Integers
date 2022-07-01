@@ -54,6 +54,10 @@ int SoI::getSize() const {
 	return this->size;
 }
 
+unsigned int& SoI::operator[](int value) {
+	return this->arr[value];
+}
+
 SoI& SoI::operator=(const SoI& other) {
 	if (this == &other)
 		return *this;
@@ -105,6 +109,13 @@ SoI SoI::operator+=(unsigned int value) {
 	}
 	return *this;
 }
-unsigned int &SoI::operator[](int value) {
-	return this->arr[value];
+SoI operator+(SoI& obj1, SoI& obj2) {
+	SoI tmp{ obj1.size + obj2.size};
+	for (int i = 0; i < tmp.size/2; i++) {
+		tmp.arr[i] = obj1.arr[i];
+		tmp.arr[i + obj1.size] = obj2.arr[i];
+	}
+	tmp.makeSoI();
+	return tmp;
+
 }
