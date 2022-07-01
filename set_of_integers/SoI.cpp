@@ -49,5 +49,17 @@ ostream& operator<<(ostream& output, const SoI& obj){
 		if (i < obj.size - 1)
 			output << "-";
 	}
+	cout << endl;
 	return output;
+}
+istream& operator>>(istream& input, SoI& obj) {
+	cout << "Enter " << obj.size << " numbers in arr from 1 to > \n";
+	for (int i = 0; i < obj.size; i++)
+		input >> obj.arr[i];
+	if (obj.isSoI())
+		return input;
+	else {
+		obj.makeSoI();
+	}
+
 }

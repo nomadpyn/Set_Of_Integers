@@ -12,14 +12,14 @@ public:
 	SoI(const int szP) :size{ szP } {
 		this->arr = new unsigned int[this->size] {};
 	}
-	SoI (const unsigned int *arrP, const int szP) : size{ szP } {
-		this->arr = new unsigned int[this->size] {};
+	SoI(const unsigned int* arrP, const int szP) : size{ szP } {
+		this->arr = new unsigned int[this->size]{};
 		for (int i = 0; i < this->size; i++)
 			this->arr[i] = arrP[i];
 		if (isSoI() == false)
 			makeSoI();
 	}
-	SoI():SoI(3){}
+	SoI() :SoI(3) {}
 	~SoI() {
 		delete[] this->arr;
 	}
@@ -28,11 +28,11 @@ public:
 			delete[] this->arr;
 		this->arr = new unsigned int[this->size];
 		for (int i = 0; i < this->size; i++)
-			this->arr[i] = other.arr[i];		
+			this->arr[i] = other.arr[i];
 	}
 	bool isSoI() const;
 	void makeSoI();
 	void print() const;
-	friend ostream& operator << (ostream& ouput, const SoI& arr);
+	friend ostream& operator << (ostream& ouput, const SoI& obj);
+	friend istream& operator >> (istream& input, SoI& obj);
 };
-
