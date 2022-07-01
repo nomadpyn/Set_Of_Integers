@@ -30,9 +30,10 @@ public:
 		for (int i = 0; i < this->size; i++)
 			this->arr[i] = other.arr[i];
 	}
+	void print() const;
 	bool isSoI() const;
 	void makeSoI();
-	void print() const;
+	bool isValueInArr(unsigned int) const;
 	friend ostream& operator << (ostream& ouput, const SoI& obj);
 	friend istream& operator >> (istream& input, SoI& obj);
 	SoI operator+=(unsigned int);

@@ -42,6 +42,14 @@ void SoI::makeSoI() {
 	}
 }
 
+bool SoI::isValueInArr(unsigned int value) const {
+	for (int i = 0; i < this->size; i++) {
+		if (this->arr[i] == value)
+			return true;
+	}
+	return false;
+}
+
 ostream& operator<<(ostream& output, const SoI& obj){
 	cout << "Set of Integers = ";
 	for (int i = 0; i < obj.size; i++) {
@@ -64,15 +72,17 @@ istream& operator>>(istream& input, SoI& obj) {
 
 }
 SoI SoI::operator+=(unsigned int value) {
-	unsigned int* tmp = new unsigned int[this->size + 1];
-	for (int i = 0; i < this->size; i++)
-		tmp[i] = this->arr[i];
-	tmp[this->size] = value;
-	delete[] this->arr;
-	this->size++;
-	this->arr = new unsigned int[this->size];
-	for (int i = 0; i < this->size; i++)
-		this->arr[i] = tmp[i];
-	delete[]tmp;
+	if (!isValueInArr(value)) {
+		unsigned int* tmp = new unsigned int[this->size + 1];
+		for (int i = 0; i < this->size; i++)
+			tmp[i] = this->arr[i];
+		tmp[this->size] = value;
+		delete[] this->arr;
+		this->size++;
+		this->arr = new unsigned int[this->size];
+		for (int i = 0; i < this->size; i++)
+			this->arr[i] = tmp[i];
+		delete[]tmp;
+	}
 	return *this;
 }
