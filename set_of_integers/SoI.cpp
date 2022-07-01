@@ -54,6 +54,17 @@ int SoI::getSize() const {
 	return this->size;
 }
 
+SoI& SoI::operator=(const SoI& other) {
+	if (this == &other)
+		return *this;
+	delete[] this->arr;
+	this->size = other.size;
+	this->arr = new unsigned int[this->size];
+	for (int i = 0; i < this->size; i++)
+		this->arr[i] = other.arr[i];
+	return *this;
+}
+
 ostream& operator<<(ostream& output, const SoI& obj){
 	cout << "Set of Integers = ";
 	for (int i = 0; i < obj.size; i++) {
@@ -75,6 +86,10 @@ istream& operator>>(istream& input, SoI& obj) {
 	}
 
 }
+SoI operator+(SoI& obj, unsigned int value)
+{
+	return SoI(obj+=value);
+}
 SoI SoI::operator+=(unsigned int value) {
 	if (!isValueInArr(value)) {
 		unsigned int* tmp = new unsigned int[this->size + 1];
@@ -90,7 +105,6 @@ SoI SoI::operator+=(unsigned int value) {
 	}
 	return *this;
 }
-
 unsigned int &SoI::operator[](int value) {
 	return this->arr[value];
 }

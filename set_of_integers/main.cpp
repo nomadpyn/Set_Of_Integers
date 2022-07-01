@@ -9,7 +9,8 @@ int main() {
 	unsigned int arr[sz]{ 1,2,3,4,5};
 	SoI A(arr, sz);
 	cout << A;
-	A += 5;
-	cout << A;
+	SoI C{};
+	C = A+6;
+	cout << C;
 	return 0;
 }
