@@ -35,4 +35,5 @@ public:
 	void print() const;
 	friend ostream& operator << (ostream& ouput, const SoI& obj);
 	friend istream& operator >> (istream& input, SoI& obj);
+	SoI operator+=(unsigned int);
 };

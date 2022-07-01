@@ -5,12 +5,11 @@ using namespace std;
 
 int main() {
 
-	const int sz = 10;
-	unsigned int arr[sz]{ 3,5,3,5,3,2,1,2,5,3 };
+	const int sz = 5;
+	unsigned int arr[sz]{ 1,2,3,4,3};
 	SoI A(arr, sz);
-	SoI B(5);
-	cin >> B;
-	cout << B;
-
+	cout << A;
+	A += 6;
+	cout << A;
 	return 0;
 }

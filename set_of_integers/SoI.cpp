@@ -63,3 +63,16 @@ istream& operator>>(istream& input, SoI& obj) {
 	}
 
 }
+SoI SoI::operator+=(unsigned int value) {
+	unsigned int* tmp = new unsigned int[this->size + 1];
+	for (int i = 0; i < this->size; i++)
+		tmp[i] = this->arr[i];
+	tmp[this->size] = value;
+	delete[] this->arr;
+	this->size++;
+	this->arr = new unsigned int[this->size];
+	for (int i = 0; i < this->size; i++)
+		this->arr[i] = tmp[i];
+	delete[]tmp;
+	return *this;
+}
