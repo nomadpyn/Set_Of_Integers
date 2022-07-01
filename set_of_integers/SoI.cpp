@@ -135,3 +135,16 @@ SoI SoI::operator-=(unsigned int value) {
 	}
 	return *this;
 }
+
+SoI operator-(SoI& obj1, SoI& obj2) {
+	SoI tmp{ obj1.size };
+	for (int i = 0; i < tmp.size;i++) {
+		tmp.arr[i] = obj1.arr[i];
+		for (int y = 0; y < obj2.size; y++) {
+			if (obj1.arr[i] == obj2.arr[y])
+				tmp.arr[i] = 0;
+		}
+			
+	}
+	return tmp;
+}
