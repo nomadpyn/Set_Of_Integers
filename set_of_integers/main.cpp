@@ -12,7 +12,9 @@ int main() {
 	const int sz2 = 5;
 	unsigned int arr2[sz2]{ 6,3,8,5,10 };
 	SoI B(arr2, sz2);
-		SoI C = A + B;
-		cout << C;
+	SoI C = A + B;
+	cout << C;
+	B -= 2;
+	cout << B;
 	return 0;
 }

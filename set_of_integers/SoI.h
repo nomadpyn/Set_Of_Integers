@@ -42,5 +42,6 @@ public:
 	SoI operator+=(unsigned int);
 	friend SoI operator+(SoI& obj, unsigned int);
 	friend SoI operator+(SoI& obj1, SoI& obj2);
+	SoI operator-=(unsigned int);
 	
 };

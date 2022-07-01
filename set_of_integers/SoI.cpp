@@ -109,6 +109,7 @@ SoI SoI::operator+=(unsigned int value) {
 	}
 	return *this;
 }
+
 SoI operator+(SoI& obj1, SoI& obj2) {
 	SoI tmp{ obj1.size + obj2.size};
 	for (int i = 0; i < tmp.size/2; i++) {
@@ -118,4 +119,19 @@ SoI operator+(SoI& obj1, SoI& obj2) {
 	tmp.makeSoI();
 	return tmp;
 
+}
+
+SoI SoI::operator-=(unsigned int value) {
+	if(value < this->size){
+		unsigned int* tmp = new unsigned int[this->size - value];
+		for (int i = 0; i < this->size-value; i++)
+			tmp[i] = this->arr[i];
+		delete[] this->arr;
+		this->size-=value;
+		this->arr = new unsigned int[this->size];
+		for (int i = 0; i < this->size; i++)
+			this->arr[i] = tmp[i];
+		delete[]tmp;
+	}
+	return *this;
 }
