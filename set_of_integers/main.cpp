@@ -10,7 +10,7 @@ int main() {
 	SoI A(arr, sz);
 	//cout << A;
 	const int sz2 = 5;
-	unsigned int arr2[sz2]{ 5,2,8,2,10 };
+	unsigned int arr2[sz2]{ 5,7,8,9,10 };
 	SoI B(arr2, sz2);
 	SoI C = A - B;
 	cout << C;

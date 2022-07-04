@@ -146,5 +146,19 @@ SoI operator-(SoI& obj1, SoI& obj2) {
 		}
 			
 	}
+	int nw_sz = 0;
+	unsigned int * t_arr = new unsigned int[obj1.size];
+	for (int i = 0; i < obj1.size; i++) {
+		if (tmp.arr[i] != 0) {
+			t_arr[nw_sz] = tmp.arr[i];
+			nw_sz++;
+		}
+	}
+	delete [] tmp.arr;
+	tmp.size = nw_sz;
+	tmp.arr = new unsigned int[nw_sz];
+	for (int i = 0; i < nw_sz; i++)
+		tmp.arr[i] = t_arr[i];
+	delete[] t_arr;
 	return tmp;
 }
