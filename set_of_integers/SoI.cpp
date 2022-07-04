@@ -162,3 +162,32 @@ SoI operator-(SoI& obj1, SoI& obj2) {
 	delete[] t_arr;
 	return tmp;
 }
+
+SoI operator * (SoI& obj1, SoI& obj2) {
+	SoI tmp{ obj1.size + obj2.size };
+	int nw_sz = 0;
+	bool find = true;
+	for (int i = 0; i < obj1.size; i++) {
+		find = true;
+		for (int y = 0; y < obj2.size; y++) {
+			if (obj2.arr[y] == obj1.arr[i])
+				find = false;
+		}
+		if (find == false) {
+			tmp.arr[nw_sz]=obj1.arr[i];
+			nw_sz++;
+		}
+	}
+	unsigned int* t_arr = new unsigned int[nw_sz];
+	for (int i = 0; i < nw_sz; i++) {
+		t_arr[i] = tmp.arr[i];
+	}
+	delete[] tmp.arr;
+	tmp.size = nw_sz;
+	tmp.arr = new unsigned int[nw_sz];
+	for (int i = 0; i < nw_sz; i++) {
+		tmp.arr[i] = t_arr[i];
+	}
+	delete[] t_arr;
+	return tmp;
+}
