@@ -35,7 +35,7 @@ public:
 	void makeSoI();
 	bool isValueInArr(unsigned int) const;
 	int getSize() const;
-	unsigned int& operator[](int);
+	unsigned int& operator[](int) const;
 	SoI& operator=(const SoI& other);
 	friend ostream& operator << (ostream& ouput, const SoI& obj);
 	friend istream& operator >> (istream& input, SoI& obj);
@@ -43,7 +43,7 @@ public:
 	friend SoI operator+(SoI& obj, unsigned int);
 	friend SoI operator+(SoI& obj1, SoI& obj2);
 	SoI operator-=(unsigned int);
-	friend SoI operator-(SoI& obj1, SoI& obj2);
-	friend SoI operator*(SoI& obj1, SoI& obj2);
-	
+	friend SoI operator-(const SoI& obj1, const SoI& obj2);
+	friend SoI operator*(const SoI& obj1, const SoI& obj2);
+	friend bool operator == (const SoI& obj1, const SoI& obj2);
 };

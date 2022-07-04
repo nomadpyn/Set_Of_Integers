@@ -3,18 +3,30 @@
 
 using namespace std;
 
+void equal(const SoI& A, const SoI& B) {
+	if (A == B)
+		cout << "SoI is equal\n";
+	else
+		cout << "SoI isnt equal\n";
+}
+
 int main() {
 
 	const int sz = 5;
 	unsigned int arr[sz]{ 1,2,3,4,5};
 	SoI A(arr, sz);
-	//cout << A;
+	cout << "A " << A;
 	const int sz2 = 5;
-	unsigned int arr2[sz2]{ 1,7,8,3,10 };
+	unsigned int arr2[sz2]{6,5,8,1,9};
 	SoI B(arr2, sz2);
-	SoI C = A * B;
-	cout << C;
-	//B -= 2;
-	//cout << B;
+	cout << "B " << B;
+	SoI C = A + B;
+	cout <<"A + B " << C;
+	SoI D = A - B;
+	cout << "A - B " << D;
+	SoI E = A * B;
+	cout << "A * B " << E;
+	cout << "A and B ";
+	equal(A, B);
 	return 0;
 }

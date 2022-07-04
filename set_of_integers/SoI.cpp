@@ -54,7 +54,7 @@ int SoI::getSize() const {
 	return this->size;
 }
 
-unsigned int& SoI::operator[](int value) {
+unsigned int& SoI::operator[](int value) const  {
 	return this->arr[value];
 }
 
@@ -110,7 +110,7 @@ SoI SoI::operator+=(unsigned int value) {
 	return *this;
 }
 
-SoI operator+(SoI& obj1, SoI& obj2) {
+SoI operator+(SoI& obj1,SoI& obj2) {
 	SoI tmp{ obj1.size + obj2.size};
 	for (int i = 0; i < tmp.size/2; i++) {
 		tmp.arr[i] = obj1.arr[i];
@@ -136,7 +136,7 @@ SoI SoI::operator-=(unsigned int value) {
 	return *this;
 }
 
-SoI operator-(SoI& obj1, SoI& obj2) {
+SoI operator-(const SoI& obj1,const SoI& obj2) {
 	SoI tmp{ obj1.size };
 	for (int i = 0; i < tmp.size;i++) {
 		tmp.arr[i] = obj1.arr[i];
@@ -163,7 +163,7 @@ SoI operator-(SoI& obj1, SoI& obj2) {
 	return tmp;
 }
 
-SoI operator * (SoI& obj1, SoI& obj2) {
+SoI operator * (const SoI& obj1, const SoI& obj2) {
 	SoI tmp{ obj1.size + obj2.size };
 	int nw_sz = 0;
 	bool find = true;
@@ -190,4 +190,14 @@ SoI operator * (SoI& obj1, SoI& obj2) {
 	}
 	delete[] t_arr;
 	return tmp;
+}
+
+bool operator == (const SoI& obj1, const SoI& obj2) {
+	if (obj1.size != obj2.size)
+		return false;
+	for (int i = 1; i < obj1.size; i++) {
+		if (obj1.arr[i] != obj2.arr[i])
+			return false;
+	}
+	return true;
 }
