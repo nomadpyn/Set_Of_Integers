@@ -1,15 +1,18 @@
-#pragma once
+﻿#pragma once
 #include<iostream>
 
 using namespace std;
-
-class SoI
+// класс SoI (Set of Integers)
+class SoI 
 {
 private:
+	// поле класса для хранения размера множества чисел
 	int size;
-	unsigned int* arr;
+	// поле класса с динамической память под числа
+	unsigned int* arr;	
 public:
-	SoI(const int szP) :size{ szP } {
+	// конструкторы с параметрами
+	SoI(const int szP) :size{ szP }{
 		this->arr = new unsigned int[this->size] {};
 	}
 	SoI(const unsigned int* arrP, const int szP) : size{ szP } {
@@ -19,10 +22,13 @@ public:
 		if (isSoI() == false)
 			makeSoI();
 	}
+	// конструктор по умолчанию
 	SoI() :SoI(3) {}
+	// декструктор 
 	~SoI() {
 		delete[] this->arr;
 	}
+	// конструктор копирования
 	SoI(const SoI& other) : size{ other.size } {
 		if (this->arr != nullptr)
 			delete[] this->arr;
@@ -30,6 +36,7 @@ public:
 		for (int i = 0; i < this->size; i++)
 			this->arr[i] = other.arr[i];
 	}
+	// описание методов и дружественных функции класса
 	void print() const;
 	bool isSoI() const;
 	void makeSoI();
@@ -40,7 +47,6 @@ public:
 	friend ostream& operator << (ostream& ouput, const SoI& obj);
 	friend istream& operator >> (istream& input, SoI& obj);
 	SoI operator+=(unsigned int);
-	friend SoI operator+(SoI& obj, unsigned int);
 	friend SoI operator+(SoI& obj1, SoI& obj2);
 	SoI operator-=(unsigned int);
 	friend SoI operator-(const SoI& obj1, const SoI& obj2);

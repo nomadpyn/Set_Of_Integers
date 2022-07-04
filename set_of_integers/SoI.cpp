@@ -1,13 +1,14 @@
-#include "SoI.h"
+﻿#include "SoI.h"
 #include<iostream>
 
 using namespace std;
-
+// метод вывода информации об объекте на экран
 void SoI::print() const {
 	for (int i = 0; i < this->size; i++)
 		cout << this->arr[i] << " | ";
 	cout << endl;
 }
+// метод проверки созданного объекта, является ли он множеством целых чисел
 bool SoI::isSoI() const {
 	for (int i = 1; i < this->size; i++) {
 		for (int y = 0; y < i; y++) {
@@ -17,7 +18,7 @@ bool SoI::isSoI() const {
 	}
 	return true;
 }
-
+// метод, который превращает обычный массив в множество целых чисел
 void SoI::makeSoI() {
 	while (isSoI()==false) {
 		
@@ -41,7 +42,7 @@ void SoI::makeSoI() {
 		}
 	}
 }
-
+// метод проверки вхождения числа в множество
 bool SoI::isValueInArr(unsigned int value) const {
 	for (int i = 0; i < this->size; i++) {
 		if (this->arr[i] == value)
@@ -49,15 +50,15 @@ bool SoI::isValueInArr(unsigned int value) const {
 	}
 	return false;
 }
-
+// геттер для размера множества
 int SoI::getSize() const {
 	return this->size;
 }
-
+// метод получения значения из множества по индексу
 unsigned int& SoI::operator[](int value) const  {
 	return this->arr[value];
 }
-
+// перегрузка оператора присваивания
 SoI& SoI::operator=(const SoI& other) {
 	if (this == &other)
 		return *this;
@@ -68,7 +69,7 @@ SoI& SoI::operator=(const SoI& other) {
 		this->arr[i] = other.arr[i];
 	return *this;
 }
-
+// перегрузка оператора вывода 
 ostream& operator<<(ostream& output, const SoI& obj){
 	cout << "Set of Integers = ";
 	for (int i = 0; i < obj.size; i++) {
@@ -79,6 +80,7 @@ ostream& operator<<(ostream& output, const SoI& obj){
 	cout << endl;
 	return output;
 }
+// перегрузка оператора ввода
 istream& operator>>(istream& input, SoI& obj) {
 	cout << "Enter " << obj.size << " numbers in arr from 1 to > \n";
 	for (int i = 0; i < obj.size; i++)
@@ -90,10 +92,7 @@ istream& operator>>(istream& input, SoI& obj) {
 	}
 
 }
-SoI operator+(SoI& obj, unsigned int value)
-{
-	return SoI(obj+=value);
-}
+// перегрузка оператора += (прибавления элемента к множеству)
 SoI SoI::operator+=(unsigned int value) {
 	if (!isValueInArr(value)) {
 		unsigned int* tmp = new unsigned int[this->size + 1];
@@ -109,7 +108,7 @@ SoI SoI::operator+=(unsigned int value) {
 	}
 	return *this;
 }
-
+// перегрузка оператора + (объединение двух множеств)
 SoI operator+(SoI& obj1,SoI& obj2) {
 	SoI tmp{ obj1.size + obj2.size};
 	for (int i = 0; i < tmp.size/2; i++) {
@@ -118,9 +117,8 @@ SoI operator+(SoI& obj1,SoI& obj2) {
 	}
 	tmp.makeSoI();
 	return tmp;
-
 }
-
+// перегрузка оператора -= (удаление нескольких значений из множества)
 SoI SoI::operator-=(unsigned int value) {
 	if(value < this->size){
 		unsigned int* tmp = new unsigned int[this->size - value];
@@ -135,7 +133,7 @@ SoI SoI::operator-=(unsigned int value) {
 	}
 	return *this;
 }
-
+// перегрузка опертора - (разность множеств)
 SoI operator-(const SoI& obj1,const SoI& obj2) {
 	SoI tmp{ obj1.size };
 	for (int i = 0; i < tmp.size;i++) {
@@ -162,7 +160,7 @@ SoI operator-(const SoI& obj1,const SoI& obj2) {
 	delete[] t_arr;
 	return tmp;
 }
-
+// перегрузка оператора * (пересечение множеств)
 SoI operator * (const SoI& obj1, const SoI& obj2) {
 	SoI tmp{ obj1.size + obj2.size };
 	int nw_sz = 0;
@@ -191,7 +189,7 @@ SoI operator * (const SoI& obj1, const SoI& obj2) {
 	delete[] t_arr;
 	return tmp;
 }
-
+// перегрузка опертора сравнения двух множеств
 bool operator == (const SoI& obj1, const SoI& obj2) {
 	if (obj1.size != obj2.size)
 		return false;

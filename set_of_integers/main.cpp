@@ -1,8 +1,8 @@
-#include<iostream>
+﻿#include<iostream>
 #include"SoI.h"
 
 using namespace std;
-
+// функция информирования о равенстве множеств
 void equal(const SoI& A, const SoI& B) {
 	if (A == B)
 		cout << "SoI is equal\n";
